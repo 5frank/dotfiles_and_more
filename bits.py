@@ -80,7 +80,7 @@ def main():
         v = convertword(v, nbytes, args.bigend, args.mirror)
         s = '{:0{}b}'.format(v, nbits)
         nibs = strsplitnth(s, 4)
-        hexdec = '  (0x{:0{}X}, {: >8})'.format(v, nhexdig * 2, v)
+        hexdec = '  (0x{:0{}X}, {: >8})'.format(v, nhexdig, v)
         print(' '.join(nibs), hexdec)
 
 main()

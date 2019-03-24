@@ -14,13 +14,23 @@ move_to_home()
         bname=$(basename $shfile)
         if [ ! "$bname" = "$SCRIPT_NAME" ]; then
             #echo "ignoring $SCRIPT_NAME"
-            bname=$(basename $shfile .sh)
-            local dest="$HOME/bin/$bname"
+            local cmdname=${bname%.*} # remove suffix
+            local dest="$HOME/bin/$cmdname"
             echo "$dest"
-            cp --no-clobber $shfile $dest
+            cp -i $shfile $dest
             chmod +x $dest
         fi
         #basename
     done
 }
-move_to_home "$@"
+#move_to_home "$@"
+move_to_home \
+    bits.py \
+    lsserial.py  \
+    pdftoascii.sh \
+    encode-mp3-cbr320.sh \
+    hexdiff.sh \
+    ls-lan.sh \
+    ctags-from-elf.sh \
+    git-branches-by-commit-date.sh \
+    git-anonymise-origin.sh \
