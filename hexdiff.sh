@@ -10,17 +10,12 @@ hexdiff()
     local binfile1="$1"
     local binfile2="$2"
     local diffprog="$3"
+    #if [ "$#" -lt 2 ]; then
+        #usage
+    #fi
+
     if [ -z "$diffprog" ]; then
         diffprog="diff"
-    fi
-    if [ ! -e "$binfile1" ]; then
-        echo "E: No such file '$binfile1'" 
-        exit 1
-    fi
-
-    if [ ! -e "$binfile2" ]; then
-        echo "E: No such file '$binfile2'" 
-        exit 1
     fi
 
     local bname1=$(basename "$binfile1")

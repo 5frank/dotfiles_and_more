@@ -23,7 +23,8 @@ move_to_home()
         #basename
     done
 }
-#move_to_home "$@"
+
+if [ "$1" = "all" ]; then
 move_to_home \
     bits.py \
     lsserial.py  \
@@ -33,4 +34,8 @@ move_to_home \
     ls-lan.sh \
     ctags-from-elf.sh \
     git-branches-by-commit-date.sh \
-    git-anonymise-origin.sh \
+    git-anonymise-origin.sh 
+else 
+    move_to_home "$@"
+fi
+
