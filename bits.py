@@ -1,3 +1,4 @@
+#!/usr/bin/env python3 
 import argparse
 from sys import stderr
 from struct import pack as struct_pack
