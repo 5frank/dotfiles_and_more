@@ -49,9 +49,9 @@ printvolume_fontawesome()
 
 #local percents="2"
 case "$1" in
-  "--up")   amixer set Master 2%+ unmute && updatei3bar;;
-  "--down") amixer set Master 2%- unmute && updatei3bar;;
-  "--togglemute") echo "TODO" ;;
-  "--show") printvolume_fontawesome ;;
+  "up")   amixer set Master 2%+ unmute && updatei3bar;;
+  "down") amixer set Master 2%- unmute && updatei3bar;;
+  "togglemute") echo "TODO" ;;
+  "show") printvolume_fontawesome ;;
   *) echo "WAT?" ;;
 esac
