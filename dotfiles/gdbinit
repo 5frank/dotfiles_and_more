@@ -1,0 +1,172 @@
+#
+## To always load these utilities commands
+## edit/create the file $HOME/.gdbinit and add the following lines
+##
+
+
+#printf "Loading script: gdb_utils.gdb\n"
+
+### CONFIURATIONS ###
+# disable the confirm promt when quiting
+set confirm off
+set print pretty on 
+
+##---------------------------------------------------------------------------
+## Load Latest build to Target
+##---------------------------------------------------------------------------
+
+
+#define llb2
+    #if $argc > 0
+        #load $arg0
+        #file $arg0
+    #else
+        ##  shell echo "Latest elf found:
+        ##   $(ls -t --full-time *.elf | head -1 | awk '{print $6, $7, $9}')"
+        ## shell ls -t *.elf | head -1
+        ## shell unset ELFPATHTMP
+        #shell ELFPATHTMP="$(ls -t *.elf | head -1)"; \
+        #echo "Latest: $ELFPATHTMP - modifed $(stat --format=%y $ELFPATHTMP)"; \
+        #echo "" > /tmp/loadLatestElf.gdb; \
+        #echo "load $ELFPATHTMP" >> /tmp/loadLatestElf.gdb; \
+        #echo "file $ELFPATHTMP" >> /tmp/loadLatestElf.gdb;
+        ##shell cat /tmp/loadLatestElf.gdb
+        #source /tmp/loadLatestElf.gdb
+    #end
+
+    #monitor sleep 1
+    #monitor halt
+    #set $sp = &_estack
+    #set $pc = __thumb_resetHandler
+    ##continue
+#end
+
+#document llb2
+    #llb - load latest build (.elf).
+    #if no args, load the latest modifed elf found in path, else
+    #loads the .elf set in argument
+#end
+
+##---------------------------------------------------------------------------
+##---------------------------------------------------------------------------
+
+define ppbits
+    set $val = $arg0
+    set $size = sizeof($arg0) * 8 # assuming byte of 8 bits
+    #printf "size %d\n", $size
+    set $i = $size - 1
+    while $i >= 0
+        if $val & (1 << $i)
+            printf "1"
+        else
+            printf "0"
+        end
+        if ($i & 3) == 0
+            printf " "
+        end
+        set $i = $i - 1
+    end
+    printf "\n"
+    set $i = $size - 4
+    while $i >= 0
+        printf " % 3d ", $i
+        set $i = $i - 4
+    end
+    printf "\n"
+end
+
+document ppbits
+    pretty print bits. easy readable binary representaiton in the form
+    0000 0000 0000 0000 0000 0000 0000 0001
+      28   24   20   16   12    8    4    0
+    Least significant bit equals index zero.
+end
+
+##---------------------------------------------------------------------------
+##---------------------------------------------------------------------------
+
+define pbitlist
+    set $val = $arg0
+    set $size = sizeof($arg0) * 8
+    #printf "size %d\n", $size
+    set $i = 0
+    while $i < $size
+        if $val & (1 << $i)
+            printf " %d\n", $i
+        end
+        set $i = $i + 1
+    end
+end
+
+document pbitlist
+    Get a list of bits set. Use the ~ operator to list cleared bits.
+    Least significant bit equals index zero.
+end
+
+
+
+define arraylen
+    printf "%d \n", sizeof($arg0)/sizeof(*$arg0)
+end
+
+define asciiPrintArray
+    set $arr = $arg0
+    set $len = sizeof($arg0)/sizeof(*$arg0)
+    set $y = 0
+    while $y < $len
+        printf "%f, ", $arg0[$y]
+        set $y = $y + 1
+    end
+    printf "\n"
+end
+
+
+##---------------------------------------------------------------------------
+## Dump Lots of Data to File
+##---------------------------------------------------------------------------
+
+define dumpf
+    # halt target or data might be changed during print
+    monitor halt
+
+    # disable any "<repeats n times>" in output
+    set print repeats 0
+
+    # enable logging
+    set logging on
+
+    # set max elements in output. defaults to 200
+    set print elements 0
+
+    # output to log only
+    set logging redirect on
+
+    set logging file /tmp/gdb_dumpf_data.txt
+
+    # remove old data if any as gdb appends data
+    set logging overwrite on
+
+    # add a time and date to dump file
+    shell echo "time for data dump: $(date --iso-8601=seconds)"
+
+    #source /tmp/gdbLogFileName.gdb
+    #show logging
+    ptype $arg0
+    printf "dataDumpStruct_t;\n dataDumpStruct_t ddata;\n"
+
+
+    printf "<data_start>\n"
+    # Dump stuff to log
+    p $arg0
+
+    # Restore settings
+    set logging off
+    set logging redirect off
+    printf "Data dumped to /tmp/gdb_dumpf_data.txt\n"
+end
+
+
+document dumpf
+    dump struct data to file. usage: (gdb) dumpf <sympol holding lots of data>
+end
+
