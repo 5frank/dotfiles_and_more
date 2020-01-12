@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/sfrank/ws/loligo/loligo-mynewt-lps/apps/stm32_spitest'
+let g:netrw_dirhist_2='/home/sfrank/ws/loligo/loligo-mynewt-lps/apps/websrv/src'
+let g:netrw_dirhist_3='/home/sfrank/ws/loligo/loligo-mynewt-lps/targets/stm32_listener'
+let g:netrw_dirhist_4='/home/sfrank/Documents'
+let g:netrw_dirhist_5='/home/sfrank/ws/loligo/loligo-mynewt-lps/targets/ncbtag_test'
+let g:netrw_dirhist_6='/home/sfrank/Downloads/hackrf-spectrum-analyzer/.git'
+let g:netrw_dirhist_7='/home/sfrank/ws/loligo/loligo-mynewt-lps/apps/sx126x_test/src'
+let g:netrw_dirhist_8='/home/sfrank/ws/loligo/berries/blueberry_logger/pyapp/bluetoothle'

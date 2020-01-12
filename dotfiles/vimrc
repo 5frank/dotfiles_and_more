@@ -1,0 +1,116 @@
+syntax on
+
+" normal (bash like) tab completion for file names?
+set wildmode=longest,list,full
+
+" display matches
+set wildmenu
+
+" tab complete and wildcard for :find etc
+set path+=**
+
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
+
+"  move text and rehighlight -- vim tip_id=224
+vnoremap > ><CR>gv
+vnoremap < <<CR>gv 
+
+" conflicts with esscape :(
+"nnoremap <C-[> :pop<CR>
+
+nnoremap <C-p> :FuzzyOpen<CR>
+" force to rrt to use 256 colors  
+set t_Co=256
+
+" This line enables the true color support.
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+set background=dark
+" ron desert torte industry
+colorscheme industry
+
+" Disable autoindent when pase
+" set paste
+
+" use system clipboard as default
+set clipboard=unnamedplus
+
+" Move current line up (Ctrl-up) and down (Ctrl-down)
+" Might not work in all terminals and over ssh
+nnoremap <C-Down> :m+<CR>
+nnoremap <C-Up> :m-2<CR>
+inoremap <C-Down> <Esc>:m+<CR>
+inoremap <C-Up> <Esc>:m-2<CR>
+vnoremap <C-Down> :m '>+1<CR>gv=gv
+vnoremap <C-Up> :m '<-2<CR>gv=gv
+
+"command Fcolumns execute "'<,'>!column -t"gv
+
+" Insert date and datetime :r is short for read
+command! Idate :r !date --iso-8601
+command! Idatetime :r !date --iso-8601=seconds
+
+" relative path
+command! Yfilepath : let @+ = expand("%")
+
+" full path
+command! Yfilepathfull : let @+ = expand("%:p")
+
+" just filename
+command! Yfilename : let @+ = expand("%:t")
+
+" load aliases from .bash_aliases
+"set shellcmdflag=-ic
+"set shell=/bin/bash\ -i
+" fun! MarkdownTableFunc() range
+"  echo system('echo '.shellescape(join(getline(a:firstline, a:lastline),\
+"  "\n"))."| column -t | sed 's/  */ | /g' | sed 's/^/ | /g'")
+" endfunction
+
+" command! -range=% -nargs=0 MarkdownTable :<line1>,<line2>call MarkdownTableFunc()
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+"let $BASH_ENV="$HOME/.vim_bash_aliases"
+"let $BASH_ENV="~/.vim_bash_aliases"
+
+"WIP
+"command! Fmarkdown_table 
+
+" show line numbers
+set number
+
+" style of line number coulumn
+ highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
+set ruler
+" 2== always show status line
+set laststatus=2
+
+" buff next (down) 
+noremap <C-j> :bn<CR>
+
+" buff prev (up)
+noremap <C-k> :bp<CR>
+
+
+
+
+
+"nnoremap t :NERDTreeFocus<CR>
+"nnoremap T :NERDTreeClose<CR>
+"nnoremap t <C 
+"nnoremap t <C-w>w
+"nnoremap t <C-w><C-w>
+"
+" Do not clear register (system clip board) on exit
+"autocmd VimLeave * call system("xsel -ib", getreg('+'))
+autocmd VimLeave * call system('echo ' . shellescape(getreg('+')) . ' | xclip -selection clipboard')
+

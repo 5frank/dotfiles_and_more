@@ -1,0 +1,4 @@
+
+gnome-terminal --hide-menubar
+
+http://www.ultrabug.fr/drop-down-terminal-in-i3/

@@ -1,0 +1,51 @@
+#!/bin/sh
+
+alias trash="gvfs-trash"
+
+alias pyclean="find . -name '*.pyc' -delete"
+
+# otherwise you can't just use to Ctrl+v to paste it back in a different place.
+alias xclip="xclip -selection c" 
+
+#alias date-iso="date +%Y-%m-%dT%H:%M:%S%z"
+alias date-iso="date --iso-8601=seconds"
+alias datetime-aest="TZ='Australia/Brisbane' date --iso-8601=seconds"
+
+alias ll="ls -ghr --time-style=long-iso"
+
+#alias clr="clear && printf '\e[3J'"
+alias cls="printf '\033c'"
+
+alias vim="nvim -u $HOME/.vimrc"
+
+alias clang-format-webkit-custom="clang-format-3.8 -style=\"{\
+  BasedOnStyle: WebKit,\
+  ColumnLimit: 80,\
+  AllowShortFunctionsOnASingleLine: false,\
+  IndentCaseLabels: true,\
+  AlignOperands: true,\
+  AlignAfterOpenBracket: Align,\
+  PointerAlignment: Right, \
+  AlignConsecutiveAssignments: true \
+}\""
+
+alias clang-format-mynewt="clang-format-3.8 -style=\"{\
+BasedOnStyle: WebKit,\
+ColumnLimit: 80,\
+AllowShortFunctionsOnASingleLine: false,\
+IndentCaseLabels: true,\
+AlignOperands: true,\
+AlignAfterOpenBracket: Align,\
+PointerAlignment: Right, \
+BinPackArguments: false, \
+BinPackParameters: false, \
+AlwaysBreakAfterReturnType: All \
+}\""
+
+# depends on  pyserial installed
+#alias lsserial="echo -e \"\
+#from serial.tools.list_ports import comports \n\
+#for p in sorted(comports()): print(p)\" | python"
+
+
+# 

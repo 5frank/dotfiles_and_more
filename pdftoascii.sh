@@ -22,7 +22,7 @@ pdf_to_ascii()
 
     # TODO add page numbers? 
     # `$ pdftotext -f 10 -l 12 -layout foo.pdf out.txt`
-    pdftotext -layout $1 $tmpfile
+    pdftotext -layout "$1" $tmpfile
 
     #  replaces other chars with \u00E9 qith format `-a U`.
     uni2ascii -ex -a U $tmpfile 
