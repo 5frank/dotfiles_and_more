@@ -1,5 +1,4 @@
 apt install \
-    gvfs-bin \
     neovim \
     fzy \
     nmap \
