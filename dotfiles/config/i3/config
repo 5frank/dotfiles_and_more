@@ -170,8 +170,6 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id sh $HOME/.config/i3/_volume.sh
 bindsym XF86AudioLowerVolume exec --no-startup-id sh $HOME/.config/i3/_volume.sh down
 
 # Switch and set  keyboard layot
-exec --no-startup-id $HOME/.config/i3/_kblayout.sh default
-bindsym $mod+p exec --no-startup-id sh $HOME/.config/i3/_kblayout.sh next
 # xev output for capslock:
 #KeyRelease event, serial 33, synthetic NO, window 0x1200001,
 #    root 0xe1, subw 0x0, time 8089952, (-259,411), root:(428,451),
@@ -181,6 +179,8 @@ bindsym $mod+p exec --no-startup-id sh $HOME/.config/i3/_kblayout.sh next
 #
 # caos>none do not work as it disables the key
 exec --no-startup-id setxkbmap -option caps:ctrl_modifier 
+exec --no-startup-id sh $HOME/.config/i3/_kblayout.sh default
+bindsym $mod+p exec --no-startup-id sh $HOME/.config/i3/_kblayout.sh next
 bindsym Caps_Lock exec --no-startup-id sh $HOME/.config/i3/_kblayout.sh next
 
 
