@@ -20,6 +20,7 @@ metadata_show()
     local fname=$(basename -- "$fpath")
     local fsuffix="${filename##*.}"
     local fsuffixlower=$(echo "$fsuffix" | tr '[:upper:]' '[:lower:]')
+    file $fpath
 
     case "$fsuffixlower" in
         jpg|png)
