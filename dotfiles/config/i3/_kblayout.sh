@@ -1,5 +1,8 @@
 #!/bin/sh
-
+echoerr() 
+{ 
+    echo "$@" 1>&2; 
+}
 
 ACTIVE_LAYOUT=$(setxkbmap -query | grep layout | grep -oE '[^ ]+$')
 
@@ -9,7 +12,10 @@ setnextlayout()
   case "$1" in
     "se") setxkbmap gb ;;
     "gb") setxkbmap se ;;
-    *)    echo "Unknown layout." ;;
+    *)    
+        echoerr "Unknown current layout. setting default" 
+        setxkbmap gb
+    ;;
   esac
 }
 
@@ -86,6 +92,7 @@ case "$1" in
     ;;
 esac
 
+# setxkbmap -option caps:ctrl_modifier 
 
 
 
