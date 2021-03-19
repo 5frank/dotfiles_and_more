@@ -10,7 +10,8 @@
 # disable the confirm promt when quiting
 set confirm off
 set print pretty on 
-
+set history save on
+set history remove-duplicates 64
 ##---------------------------------------------------------------------------
 ## Load Latest build to Target
 ##---------------------------------------------------------------------------

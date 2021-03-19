@@ -1,0 +1,53 @@
+SI                                                 short[1] | long[2]
+
+
+atto 	a   1e-18  10^(-18)  0.000000000000000001 
+femto 	f   1e-15  10^(-15)  0.000000000000001
+pico 	p   1e-12  10^(-12)  0.000000000001       
+nano 	n   1e-9   10^(-9)   0.000000001          
+micro 	u   1e-6   10^(-6)   0.000001             
+milli 	m   1e-3   10^(-3)   0.001
+centi 	c   1e-2   10^(-2)   0.01
+deci 	d   1e-1   10^(-1)   0.1
+-       -   1e0    10^0      1
+hecto   h   1e+2   10^(2)    100
+kilo 	k   1e+3   10^(3)    1000
+mega 	M   1e+6   10^(6)    1000000             
+giga 	G   1e+9   10^(9)    1000000000          
+tera 	T   1e+12  10^(12)   1000000000000       
+peta 	P   1e+15  10^(15)   1000000000000000    
+exa 	E   1e+18  10^(18)   1000000000000000000 
+zetta 	Z 	1e+21  10^(1)    1000000000000000000000 
+yotta 	Y 	1e+24  10^(4)    1000000000000000000000000
+
+SI                           | short (long) scale**
+
+atto 	a   1e-18  10^(-18) |
+femto 	f   1e-15  10^(-15) |
+pico 	p   1e-12  10^(-12) |
+nano 	n   1e-9   10^(-9)  |
+micro 	u   1e-6   10^(-6)  |
+milli 	m   1e-3   10^(-3)  | 
+centi 	c   1e-2   10^(-2)  |
+deci 	d   1e-1   10^(-1)  |
+-       -   1e0    10^0     |
+hecto   h   1e+2   10^(2)   | ten 
+kilo 	k   1e+3   10^(3)   | hundred 
+mega 	M   1e+6   10^(6)   | million (million)
+giga 	G   1e+9   10^(9)   | billion (milliard)
+tera 	T   1e+12  10^(12)  | trillion (billion)
+peta 	P   1e+15  10^(15)  | quadrillion (billiard)
+exa 	E   1e+18  10^(18)  | quintillion (trillion)
+zetta 	Z 	1e+21  10^(21)  | sextillion (trilliard)
+yotta 	Y 	1e+24  10^(24)  | septillion (quadrillion)
+
+**
+Short scale:  English- and Arabic-speaking countries and regions.
+
+Long scale users (or partialy used)
+German-, French-, Dutch-, Spanish- and Portuguese-speaking countries and
+regions.  And the following: Andorra, Croatia, Czech Republic, Denmark,
+Finland, Hungary, Iceland, Iran Italy, Montenegro North Macedonia, Norway,
+Poland, Romania, Serbia, Slovakia, Slovenia, Sweden. Switzerland.
+https://en.wikipedia.org/wiki/Long_and_short_scales
+
