@@ -116,15 +116,17 @@ if ! shopt -oq posix; then
 fi
 
 
+if [ -d "$HOME/go/bin" ] ; then
+    PATH="$HOME/go/bin:$PATH"
+fi
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-
+export PATH=~/.local/bin:"$PATH"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
-export MARKER_KEY_GET='\C-b'
-[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
-
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/rg.conf"
