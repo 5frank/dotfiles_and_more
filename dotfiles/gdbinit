@@ -51,6 +51,11 @@ set history remove-duplicates 64
 ##---------------------------------------------------------------------------
 ##---------------------------------------------------------------------------
 
+define resetgo
+    mon reset
+    mon go
+end
+
 define ppbits
     set $val = $arg0
     set $size = sizeof($arg0) * 8 # assuming byte of 8 bits

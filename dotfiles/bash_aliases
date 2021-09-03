@@ -1,35 +1,39 @@
 #!/bin/sh
 
-alias trash="gvfs-trash"
+# "gvfs-trash" depricated
+alias trash="gio trash"
 
 alias pyclean="find . -name '*.pyc' -delete"
 
 # otherwise you can't just use to Ctrl+v to paste it back in a different place.
-alias xclip="xclip -selection c" 
+#alias xclip="xclip -selection c" 
+alias xclip='xargs echo -n | xclip -selection clipboard'
 
 #alias date-iso="date +%Y-%m-%dT%H:%M:%S%z"
 alias date-iso="date --iso-8601=seconds"
 alias datetime-aest="TZ='Australia/Brisbane' date --iso-8601=seconds"
 
 alias ll="ls -ghr --time-style=long-iso"
+# find file fuzzz
+alias ff="fzf --no-sort --exact -f  "
 
 #alias clr="clear && printf '\e[3J'"
 alias cls="printf '\033c'"
 
 alias vim="nvim -u $HOME/.vimrc"
 
-alias clang-format-webkit-custom="clang-format-3.8 -style=\"{\
+#AlignOperands: true,
+alias clang-format-webkit-custom="clang-format -style=\"{\
   BasedOnStyle: WebKit,\
   ColumnLimit: 80,\
   AllowShortFunctionsOnASingleLine: false,\
   IndentCaseLabels: true,\
-  AlignOperands: true,\
   AlignAfterOpenBracket: Align,\
   PointerAlignment: Right, \
   AlignConsecutiveAssignments: true \
 }\""
 
-alias clang-format-mynewt="clang-format-3.8 -style=\"{\
+alias clang-format-mynewt="clang-format -style=\"{\
 BasedOnStyle: WebKit,\
 ColumnLimit: 80,\
 AllowShortFunctionsOnASingleLine: false,\
@@ -42,10 +46,14 @@ BinPackParameters: false, \
 AlwaysBreakAfterReturnType: All \
 }\""
 
+# https://stackoverflow.com/questions/55684272/specifying-an-architecture-in-gdb-multiarch
+alias arm-none-eabi-gdb="gdb-multiarch"
+
 # depends on  pyserial installed
 #alias lsserial="echo -e \"\
 #from serial.tools.list_ports import comports \n\
 #for p in sorted(comports()): print(p)\" | python"
 
 
+alias rsync-repo="rsync -az --progress --filter=':- $(pwd)/.gitignore' $(pwd)/ "
 # 
