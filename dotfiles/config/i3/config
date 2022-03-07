@@ -166,8 +166,8 @@ bar {
 }
 
 # Volume control etc. refresh  killall -USR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id sh $HOME/.config/i3/_volume.sh up
-bindsym XF86AudioLowerVolume exec --no-startup-id sh $HOME/.config/i3/_volume.sh down
+bindsym XF86AudioRaiseVolume exec --no-startup-id sh $HOME/.config/i3/_volume.sh --up
+bindsym XF86AudioLowerVolume exec --no-startup-id sh $HOME/.config/i3/_volume.sh --down
 
 # Switch and set  keyboard layot
 # xev output for capslock:
@@ -179,20 +179,27 @@ bindsym XF86AudioLowerVolume exec --no-startup-id sh $HOME/.config/i3/_volume.sh
 #
 # caos>none do not work as it disables the key
 exec --no-startup-id setxkbmap -option caps:ctrl_modifier 
-exec --no-startup-id sh $HOME/.config/i3/_kblayout.sh default
-bindsym $mod+p exec --no-startup-id sh $HOME/.config/i3/_kblayout.sh next
-bindsym Caps_Lock exec --no-startup-id sh $HOME/.config/i3/_kblayout.sh next
+exec --no-startup-id sh $HOME/.config/i3/_keyboard.sh default
+bindsym $mod+p exec --no-startup-id sh $HOME/.config/i3/_keyboard.sh next
+bindsym Caps_Lock exec --no-startup-id sh $HOME/.config/i3/_keyboard.sh next
 
+# dark theme settings is loaded
+exec --no-startup-id /usr/lib/gsd-xsettingsexec
 
 # ThinkVintage Button refresh display setttings
-bindsym XF86Launch1 exec --no-startup-id sh $HOME/.config/i3/_display.sh
+# bindsym XF86Launch1 exec --no-startup-id sh $HOME/.config/i3/_display.sh
+#
+# XF86Display (F7 or Fn+F7 on thinkpad x270 et al)
+bindsym XF86Display exec --no-startup-id sh $HOME/.config/i3/_display.sh
+
+
 
 # Sreen brightness controls
 # added after new keyboard or was it BIOS upgrade?
-#bindsym XF86MonBrightnessUp exec xbacklight -inc 2 # increase screen brightness
-#bindsym XF86MonBrightnessDown exec xbacklight -dec 2 # decrease screen brightness
-bindsym XF86MonBrightnessUp exec light -A 2 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 2 # decrease screen brightness
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 2 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 2 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec light -A 1 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 1 # decrease screen brightness
 
 
 #  applet indicators wrieless
@@ -235,7 +242,7 @@ exec --no-startup-id firefox
 
 # classic bluescreen 0x001091
 # Lock screen. -time in minutes. Requriess apt-get install xautolock
-exec --no-startup-id xautolock -time 30 -locker 'i3lock --dpms --color=000064'
+exec --no-startup-id xautolock -time 10 -locker 'i3lock --dpms --color=000064'
 
 
 
