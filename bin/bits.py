@@ -23,7 +23,11 @@ def revbytebits(b):
 def header(nbits):
     rev4 = reversed(range(0, nbits, 4))
     nibidxs = ['{0: 4d} '.format(n) for n in rev4]
-    return ''.join(nibidxs)
+    s = ''.join(nibidxs)
+    nbytes = nbits // 8
+    s += "| HEX".ljust(nbytes * 2 + 3)
+    s += "| DEC"
+    return s
 
 class Word(object):
     ''' "Word" as in series of bytes and bits '''
@@ -67,10 +71,11 @@ class Word(object):
 
     def hexstr(self):
         a = ['{:02X}'.format(b) for b in self.ba]
-        return '0x' + ''.join(a)
+        #return '0x' + ''.join(a)
+        return ''.join(a)
 
     def __str__(self):
-        return '{} | {} | {}'.format(self.nibstr(), self.hexstr(), self.sval)
+        return '{} | {} | {}'.format(self.nibstr(), self.hexstr(), self.val)
 
 parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
