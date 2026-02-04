@@ -20,6 +20,8 @@ vim.keymap.set('v', '<', '<<CR>gv')
 vim.keymap.set('n', 'Y', 'Y')
 
 -- FuzzyOpen
+-- search working directory and not git repo root
+vim.g.fuzzy_rootcmds = {}
 vim.keymap.set('n', '<C-p>', ':FuzzyOpen<CR>')
 
 -- Color settings
