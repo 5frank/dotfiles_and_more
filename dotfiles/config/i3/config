@@ -178,7 +178,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id sh $HOME/.config/i3/_volume.sh
 #    XFilterEvent returns: False
 #
 # caos>none do not work as it disables the key
-exec --no-startup-id setxkbmap -option caps:ctrl_modifier 
+#exec --no-startup-id setxkbmap -option caps:ctrl_modifier 
 exec --no-startup-id sh $HOME/.config/i3/_keyboard.sh default
 bindsym $mod+p exec --no-startup-id sh $HOME/.config/i3/_keyboard.sh next
 bindsym Caps_Lock exec --no-startup-id sh $HOME/.config/i3/_keyboard.sh next
@@ -194,12 +194,16 @@ bindsym XF86Display exec --no-startup-id sh $HOME/.config/i3/_display.sh
 
 
 
-# Sreen brightness controls
-# added after new keyboard or was it BIOS upgrade?
+#### Sreen brightness controls
+# 
 # bindsym XF86MonBrightnessUp exec xbacklight -inc 2 # increase screen brightness
 # bindsym XF86MonBrightnessDown exec xbacklight -dec 2 # decrease screen brightness
-bindsym XF86MonBrightnessUp exec light -A 1 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 1 # decrease screen brightness
+## light stopped working 2026 (requires sudo or some udev rule)
+# bindsym XF86MonBrightnessUp exec light -A -T 0.25 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec light -U -T 0.25 # decrease screen brightness
+## apt install -y brightnessctl 
+bindsym XF86MonBrightnessUp exec  brightnessctl -q -e set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl -q --e set 5%-
 
 
 #  applet indicators wrieless
